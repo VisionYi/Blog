@@ -1,0 +1,1081 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Visionyi 鹹魚&#39;s blog">
+    <title>網頁切版 - 開發技巧之筆記 (持續更新) - Visionyi 鹹魚&#39;s blog</title>
+    <meta name="author" content="Visionyi 鹹魚">
+    
+        <meta name="keywords" content="web,CSS,SCSS,學習筆記,樣版設計">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="從 4 月底到現在，目前持續更新當中。 這是為了讓自己的網頁切版技巧可以更加熟練，而記錄的一些心得內容，還有一些初始的開發設置，提供自己能夠更快速地上手切版技巧。  Update date: 2018-07-15">
+<meta name="keywords" content="web,CSS,SCSS,學習筆記,樣版設計">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="網頁切版 - 開發技巧之筆記 (持續更新)">
+<meta property="og:url" content="https://visionyi.github.io/2018/04/23/網頁切版 - 開發技巧之筆記/index.html">
+<meta property="og:site_name" content="Visionyi 鹹魚&#39;s blog">
+<meta property="og:description" content="從 4 月底到現在，目前持續更新當中。 這是為了讓自己的網頁切版技巧可以更加熟練，而記錄的一些心得內容，還有一些初始的開發設置，提供自己能夠更快速地上手切版技巧。  Update date: 2018-07-15">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-09-16T03:47:17.028Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="網頁切版 - 開發技巧之筆記 (持續更新)">
+<meta name="twitter:description" content="從 4 月底到現在，目前持續更新當中。 這是為了讓自己的網頁切版技巧可以更加熟練，而記錄的一些心得內容，還有一些初始的開發設置，提供自己能夠更快速地上手切版技巧。  Update date: 2018-07-15">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://i.imgur.com/lnfmhKP.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+        <link rel="stylesheet" href="/assets/css/style-yrst5vo1nxaxbp2g3v9na2wg1lixlpr3ghbjdvskeixmu79deycecx3rh4bt.min.css">
+    
+        <link rel="stylesheet" href="/assets/css/main-modify.css">
+    
+    <!--STYLES END-->
+    
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="5" data-extra-modify="1">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Visionyi 鹹魚&#39;s blog</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" class="scrollbar" data-behavior="5" data-extra-modify="1">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/">
+                    <img class="sidebar-profile-picture" src="https://i.imgur.com/lnfmhKP.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <a href="/" style="text-decoration: none;">
+                    <h4 class="sidebar-profile-name">Visionyi 鹹魚&#39;s blog</h4>
+                </a>
+                
+                    <h5 class="sidebar-profile-bio"><p> 悠遊於程式 Coding 之間 <br /> 熱愛學習，尋找熱情，大膽擁抱它 <br /> 熟悉 Web、JavaScript、Vue、PHP <br /> 現在正處於前端開發中 <br /> <br /> <em>Welcome to my personal blog.</em> </p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link "
+                             href="/categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-th-list"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+                </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link "
+                             href="/tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+                </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+                </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link "
+                             href="#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+                </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+                </li>
+            
+            </ul>
+        
+
+        <div class="sidebar-horizon">
+            <h3 class="sidebar-title">關注我</h3>
+            <ul class="sidebar-outer-links">
+            
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://github.com/VisionYi"
+                                title="Github"
+                                target="_blank"
+                            >
+                            
+                                <i class="icon fa fa-github"></i>
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="mailto:scps950613@gmail.com"
+                                title="E-mail"
+                                target="_blank"
+                            >
+                            
+                                <i class="icon fa fa-envelope-o"></i>
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://fb.me/shane.yi.hong"
+                                title="Facebook"
+                                target="_blank"
+                            >
+                            
+                                <i class="icon fa fa-facebook"></i>
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="/atom.xml"
+                                title="RSS"
+                                target="_blank"
+                            >
+                            
+                                <i class="icon fa fa-rss"></i>
+                            
+                            </a>
+                        </li>
+                
+            
+            </ul>
+
+            <h3 class="sidebar-title">友站連結</h3>
+            <ul class="sidebar-outer-links">
+            
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://blog.aweimeow.tw/"
+                                title="aweimeow&#39;s blog"
+                                target="_blank"
+                            >
+                            
+                                aweimeow&#39;s blog
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://blog.louie.lu/"
+                                title="louie_lu&#39;s blog"
+                                target="_blank"
+                            >
+                            
+                                louie_lu&#39;s blog
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://shouzo.github.io/blog/"
+                                title="shouzo&#39;s blog"
+                                target="_blank"
+                            >
+                            
+                                shouzo&#39;s blog
+                            
+                            </a>
+                        </li>
+                
+            
+            </ul>
+        </div>
+    </div>
+</nav>
+
+            
+
+            <div id="main"
+                data-behavior="5"
+                data-extra-modify="1"
+                class="
+                       hasCoverMetaIn
+                       ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            網頁切版 - 開發技巧之筆記 (持續更新)
+        </h1>
+    
+    <div class="post-meta">
+    <i class="fa fa-calendar" style="margin-right: 5px;"></i>
+    <time itemprop="datePublished" datetime="2018-04-23T00:00:00+08:00">
+	
+		    2018-04-23
+    	
+    </time>
+    
+        <i class="fa fa-th-list" style="margin: 0 5px 0 20px;"></i>
+        
+    <a class="category-link" href="/categories/網頁開發/">網頁開發</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>從 4 月底到現在，目前持續更新當中。</p>
+<p>這是為了讓自己的網頁切版技巧可以更加熟練，而記錄的一些心得內容，還有一些初始的開發設置，提供自己能夠更快速地上手切版技巧。</p>
+<blockquote>
+<p>Update date: 2018-07-15</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="開發前置作業"><a href="#開發前置作業" class="headerlink" title="開發前置作業"></a>開發前置作業</h2><h3 id="初始化與插件配置"><a href="#初始化與插件配置" class="headerlink" title="初始化與插件配置"></a>初始化與插件配置</h3><ul>
+<li><p>CSS 初始化</p>
+<ul>
+<li><p>引入第三方初始化 CSS</p>
+<ul>
+<li>推薦選擇全部 margin &amp; padding 初始化 0 的</li>
+<li>ress.css</li>
+</ul>
+</li>
+<li><p>加上自訂 reset.css，必加入的配置設定 : (可加在 <code>body</code> 上)</p>
+<ul>
+<li>font-family</li>
+<li>font-size</li>
+<li>line-height</li>
+<li>color</li>
+<li>background-color</li>
+<li>text-align</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>grid system 框架插件</p>
+</li>
+<li><p>UI 元件框架 (大型的)</p>
+<ul>
+<li>每個專案只要選一種就好</li>
+<li>文字 &amp; 背景顏色配置</li>
+<li>若有內置自己的 reset.css 需要多留意是否會覆蓋到自訂的配置</li>
+<li>若有主題的 CSS 也需要多留意</li>
+<li>若需要特別修改 CSS 屬性，可改成 <code>inherit</code> 或 <code>initial</code>，繼承最初自訂的配置</li>
+</ul>
+</li>
+</ul>
+<h3 id="開發環境建置"><a href="#開發環境建置" class="headerlink" title="開發環境建置"></a>開發環境建置</h3><ul>
+<li>自動化任務與打包配置<ul>
+<li>glup、webpack、Parcel</li>
+</ul>
+</li>
+<li>CSS 預處理器<ul>
+<li>SASS</li>
+<li>PostCSS</li>
+</ul>
+</li>
+<li>HTML 樣板預處理器<ul>
+<li>pug</li>
+<li>PostHTML</li>
+</ul>
+</li>
+</ul>
+<h2 id="頁面版面配置"><a href="#頁面版面配置" class="headerlink" title="頁面版面配置"></a>頁面版面配置</h2><h3 id="HTML-排版配置"><a href="#HTML-排版配置" class="headerlink" title="HTML 排版配置"></a>HTML 排版配置</h3><ul>
+<li><p>優先以設計師的角度去下排版</p>
+</li>
+<li><p>Flex 容器排版應用</p>
+<ol>
+<li>使用 <code>margin-left: auto;</code> 在容器中<strong>讓子元素推移到右側</strong>，用來代替<code>float: right;</code></li>
+<li>若容器中只有 A &amp; B 元素，A 為固定長度，使用 <code>flex: 1</code> 讓 B <strong>填滿剩餘長度</strong></li>
+<li>於容器中<strong>讓多個子元素橫向排列</strong></li>
+<li>於容器中<strong>讓子元素垂直置中</strong></li>
+</ol>
+</li>
+<li><p>快速建置 HTML 區塊版面 - CSS 工具</p>
+</li>
+</ul>
+<h3 id="RWD-版面配置"><a href="#RWD-版面配置" class="headerlink" title="RWD 版面配置"></a>RWD 版面配置</h3><ul>
+<li>使用 <strong>網格系統排版</strong> + 顯示與隱藏的斷點切換</li>
+</ul>
+<h3 id="CSS-Class-樣式命名的配置"><a href="#CSS-Class-樣式命名的配置" class="headerlink" title="CSS Class 樣式命名的配置"></a>CSS Class 樣式命名的配置</h3><ul>
+<li><p>搭配 CSS / SASS 設計模式規範</p>
+<ul>
+<li>SMACSS</li>
+<li>OOCSS</li>
+<li>BEM (推薦)<ul>
+<li><a href="https://www.smashingmagazine.com/2016/06/battling-bem-extended-edition-common-problems-and-how-to-avoid-them/" target="_blank" rel="noopener">Battling BEM CSS: 10 Common Problems And How To Avoid Them</a></li>
+</ul>
+</li>
+<li>MVCSS</li>
+</ul>
+</li>
+<li><p>若有加入大型的 UI 元件框架，自訂的 CSS 樣式名稱需要加入自己的<strong>前綴符號</strong>，可避免與框架的 CSS 樣式名稱衝突或被覆蓋</p>
+</li>
+<li><p>若要修改 UI 元件的 CSS 內容，最好的處裡方式為</p>
+<ul>
+<li>需要先擁有自訂的 CSS 樣式</li>
+<li>CSS 撰寫類似如下 2 種，能明確增加 CSS 權重去覆蓋，如果還覆蓋不了就代表此 UI 元件的 CSS 權重值非常糟糕</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 有明確指定的 UI 元件時適用 */</span></span><br><span class="line"><span class="selector-class">.self-class</span> <span class="selector-class">.ui-component-class</span> &#123;</span><br><span class="line">  <span class="attribute">properties</span>: xxx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 同時有多個相同的 UI 元件，卻要套用不同的自訂樣式時適用 */</span></span><br><span class="line"><span class="selector-class">.self-type1-class</span><span class="selector-class">.ui-component-class</span> &#123;</span><br><span class="line">  <span class="attribute">properties</span>: xxx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="增加使用者體驗"><a href="#增加使用者體驗" class="headerlink" title="增加使用者體驗"></a>增加使用者體驗</h3><ul>
+<li>a &amp; button 標籤的 hover 顯示</li>
+<li>Loading 狀態過程顯示</li>
+<li>頁面全體遮罩 (在操做流程中適當的加入，可以避免一些問題)</li>
+<li>Dialog Message 跳出訊息</li>
+</ul>
+<h3 id="無障礙標籤配置"><a href="#無障礙標籤配置" class="headerlink" title="無障礙標籤配置"></a>無障礙標籤配置</h3><blockquote>
+<p><em>待新增…</em></p>
+</blockquote>
+<h2 id="CSS-屬性架構"><a href="#CSS-屬性架構" class="headerlink" title="CSS 屬性架構"></a>CSS 屬性架構</h2><ul>
+<li><p><a href="https://ithelp.ithome.com.tw/articles/10196454" target="_blank" rel="noopener">CSS 權重 (css specificity)</a></p>
+</li>
+<li><p>使用 rem 單位，隨著根字體大小而自動改變，預設為 16px (<a href="https://webdesign.tutsplus.com/zh-hans/tutorials/comprehensive-guide-when-to-use-em-vs-rem--cms-23984" target="_blank" rel="noopener">參考網址</a>)</p>
+<ul>
+<li>font-size</li>
+<li>width</li>
+<li>height</li>
+<li>margin</li>
+<li>padding</li>
+<li>border-radius</li>
+<li>shadows</li>
+</ul>
+</li>
+<li><p>使用 em 單位，隨著當下字體大小而自動改變，使用時機為 :</p>
+<ul>
+<li>單一元素或小型元件的<strong>文字內容不是使用默認根字體大小時</strong></li>
+<li>此元素或元件可以<strong>有多種的字體大小時</strong></li>
+<li>此元素或元件的大小是<strong>以字體大小的比例做縮放時</strong></li>
+</ul>
+</li>
+<li><p>若設計的內容無背景或邊框線條，需要加上間距 (邊距) 時</p>
+<ul>
+<li>使用 margin 優先於 padding</li>
+<li>使用單邊優先於雙邊</li>
+<li>單邊優先使用 margin-bottom 或 margin-right</li>
+</ul>
+</li>
+</ul>
+<h2 id="SCSS-架構"><a href="#SCSS-架構" class="headerlink" title="SCSS 架構"></a>SCSS 架構</h2><h3 id="基本檔案目錄"><a href="#基本檔案目錄" class="headerlink" title="基本檔案目錄"></a>基本檔案目錄</h3><ul>
+<li><p><strong><code>_variables.scss</code></strong></p>
+<ul>
+<li>包含所有的變數與設定內容</li>
+</ul>
+</li>
+<li><p><strong><code>_mixins.scss</code></strong></p>
+<ul>
+<li>包含 @mixin、@extend、@function 之類的</li>
+</ul>
+</li>
+<li><p><strong><code>_reset.scss</code></strong></p>
+<ul>
+<li>初始化頁面基本元素，把所有預設值重置</li>
+<li>可加入第三方 reset CSS - <a href="https://github.com/filipelinhares/ress" target="_blank" rel="noopener">ress.css</a></li>
+<li>加入自訂的預設值</li>
+</ul>
+</li>
+<li><p><strong><code>_base.scss</code></strong></p>
+<ul>
+<li>elements &amp; structure (layout) 單一元素或結構外框之類的</li>
+<li>專案變大時，以資料夾分出多個檔案</li>
+</ul>
+</li>
+<li><p><strong><code>_components.scss</code></strong></p>
+<ul>
+<li>元件，大部份都會是搭配 JS 的類型</li>
+<li>專案變大時，以資料夾分出多個檔案</li>
+</ul>
+</li>
+<li><p><strong><code>_helpers.scss</code></strong></p>
+<ul>
+<li>增加元素或元件的附加屬性，例: 背景大小、間距、位置型態之類的</li>
+<li>CSS class 多為單一屬性內容</li>
+</ul>
+</li>
+<li><p><strong><code>main.scss</code></strong></p>
+<ul>
+<li>@import 以上所有 scss/sass 檔案</li>
+</ul>
+</li>
+</ul>
+<h3 id="Variables-必要的變數"><a href="#Variables-必要的變數" class="headerlink" title="Variables 必要的變數"></a>Variables 必要的變數</h3><ul>
+<li><p>文字大小</p>
+<ul>
+<li>小字至少 1 種</li>
+<li>原始大小 1 種</li>
+<li>大字至少 3 種</li>
+</ul>
+</li>
+<li><p>間距 (邊距) 大小</p>
+<ul>
+<li>總共至少 3 種 ~ 5 種</li>
+</ul>
+</li>
+<li><p>顏色</p>
+<ul>
+<li><strong>文字</strong>顏色</li>
+<li><strong>背景</strong>顏色</li>
+<li><strong>邊框線條</strong>顏色</li>
+<li><strong>主題色彩</strong>顏色，像是 primary、info、success、warning、danger</li>
+</ul>
+</li>
+<li><p>madia query 斷點範圍</p>
+</li>
+</ul>
+<h3 id="可做成-Helpers-的樣式種類-需加上-important"><a href="#可做成-Helpers-的樣式種類-需加上-important" class="headerlink" title="可做成 Helpers 的樣式種類 (需加上 ! important)"></a>可做成 Helpers 的樣式種類 (需加上 ! important)</h3><ul>
+<li><p>間格距離、分隔空間之類的</p>
+<ul>
+<li>內外邊距 - <code>margin</code> 或 <code>padding</code></li>
+<li>例如: <code>margin-buttom: xxx</code> =&gt; <code>mb-x</code> 樣式名稱</li>
+</ul>
+</li>
+<li><p>顏色</p>
+<ul>
+<li>背景 - <code>background-color</code></li>
+<li>文字 - <code>color</code></li>
+<li>邊框 - <code>border-color</code></li>
+</ul>
+</li>
+<li><p>文字類型</p>
+<ul>
+<li>大小 - <code>font-size</code> + <code>line-weight</code></li>
+<li>粗細 - <code>font-weight</code></li>
+<li>斜體字 - <code>font-style: italic</code></li>
+<li>底線 - <code>text-decoration: underline</code></li>
+<li>基本顏色之明亮或黯淡 - <code>color</code></li>
+</ul>
+</li>
+<li><p>元素的顯示方式</p>
+<ul>
+<li>垂直置中 - <code>display: flex</code> + <code>algin-items</code> 或 <code>justify-content</code></li>
+<li>RWD 之元素的顯示或隱藏</li>
+</ul>
+</li>
+</ul>
+<h3 id="顏色架構-懶人包-以下為淡色系為主"><a href="#顏色架構-懶人包-以下為淡色系為主" class="headerlink" title="顏色架構 (懶人包) - 以下為淡色系為主"></a>顏色架構 (懶人包) - 以下為淡色系為主</h3><h4 id="文字顏色-由深到淺"><a href="#文字顏色-由深到淺" class="headerlink" title="文字顏色 - 由深到淺"></a>文字顏色 - 由深到淺</h4><ul>
+<li>主顏色範圍: <code>#000000</code> ~ <code>#333333</code></li>
+<li>lighten(主顏色 , 25%)</li>
+<li>lighten(主顏色 , 35%)</li>
+</ul>
+<h4 id="邊框線條顏色-由深到淺"><a href="#邊框線條顏色-由深到淺" class="headerlink" title="邊框線條顏色 - 由深到淺"></a>邊框線條顏色 - 由深到淺</h4><ul>
+<li><p>主顏色範圍: <code>bga(176, 176, 176) #B0B0B0</code> ~ <code>bga(201, 201, 201) #C9C9C9</code></p>
+<ul>
+<li>rbg 3 個值相加介於 528 ~ 603 之間</li>
+<li>每個數值介於 151 ~ 226 之間</li>
+</ul>
+</li>
+<li><p>lighten(主顏色 , 10%)</p>
+</li>
+<li>lighten(主顏色 , 14%) <strong>最高值</strong>: <code>#EDEDED</code></li>
+</ul>
+<h4 id="背景顏色-由深到淺"><a href="#背景顏色-由深到淺" class="headerlink" title="背景顏色 - 由深到淺"></a>背景顏色 - 由深到淺</h4><ul>
+<li><p>主顏色範圍: <code>bga(219, 219, 219) #DBDBDB</code> ~ <code>bga(232, 232, 232) #E8E8E8</code></p>
+<ul>
+<li>rbg 3 種值相加介於 657 ~ 696 之間</li>
+<li>每個數值介於 206 ~ 245 之間</li>
+</ul>
+</li>
+<li><p>lighten(主顏色 , 5%)</p>
+</li>
+<li><p>lighten(主顏色 , 8%) <strong>最高值</strong>: <code>#FAFAFA</code></p>
+</li>
+<li><p>計算公式:</p>
+<ul>
+<li>先定義出<strong>最高值</strong> A 與主顏色亮度會提高 x% &amp; y%，再定義 z% 的區間範圍 (此範例為 x=5, y=8, z=5)</li>
+<li>選色範圍: darken(A, y% + z%) ~ darken(A, y%)</li>
+<li>每個數值介於 (最低範圍值 - 範圍相差值) ~ (最高範圍值 + 範圍相差值)</li>
+</ul>
+</li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">Tagged in</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/CSS-SCSS/">CSS/SCSS</a> <a class="tag tag--primary tag--small t-link" href="/tags/note/">note</a> <a class="tag tag--primary tag--small t-link" href="/tags/web/">web</a> <a class="tag tag--primary tag--small t-link" href="/tags/樣版設計/">樣版設計</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/06/28/The-F2E-TodoList/"  data-tooltip="The F2E 挑戰之學習筆記 - TodoList">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm icon-ml">Previous</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/05/vue-learning-note/" data-tooltip="Vue Learning 學習筆記 (已結束更新)">
+                
+                    <span class="hide-xs hide-sm icon-mr">Next</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://visionyi.github.io/2018/04/23/網頁切版 - 開發技巧之筆記/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://visionyi.github.io/2018/04/23/網頁切版 - 開發技巧之筆記/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://visionyi.github.io/2018/04/23/網頁切版 - 開發技巧之筆記/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 Visionyi 鹹魚. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5" data-extra-modify="1">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/06/28/The-F2E-TodoList/"  data-tooltip="The F2E 挑戰之學習筆記 - TodoList">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm icon-ml">Previous</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/05/vue-learning-note/" data-tooltip="Vue Learning 學習筆記 (已結束更新)">
+                
+                    <span class="hide-xs hide-sm icon-mr">Next</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://visionyi.github.io/2018/04/23/網頁切版 - 開發技巧之筆記/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://visionyi.github.io/2018/04/23/網頁切版 - 開發技巧之筆記/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://visionyi.github.io/2018/04/23/網頁切版 - 開發技巧之筆記/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://visionyi.github.io/2018/04/23/網頁切版 - 開發技巧之筆記/">
+                <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://visionyi.github.io/2018/04/23/網頁切版 - 開發技巧之筆記/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://visionyi.github.io/2018/04/23/網頁切版 - 開發技巧之筆記/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://i.imgur.com/lnfmhKP.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Visionyi 鹹魚</h4>
+        
+            <div id="about-card-bio"><p> 悠遊於程式 Coding 之間 <br /> 熱愛學習，尋找熱情，大膽擁抱它 <br /> 熟悉 Web、JavaScript、Vue、PHP <br /> 現在正處於前端開發中 <br /> <br /> <em>Welcome to my personal blog.</em> </p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Kaohsiung, Taiwan
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/02/26/大四上學期的回顧/">
+                            <img class="media-image" src="https://i.imgur.com/oZdRaPM.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/02/26/大四上學期的回顧/">
+                            <h3 class="media-heading">大四上學期的回顧</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-02-26
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>回想過去四上的我其實做了一些不同的嘗試與挑戰，不管是實習上或在學校，程式技術的學習，職場上辛苦的體驗，都有不少的收穫，也更讓我認識了許多新朋友呢！<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/03/12/youtube-google-map-rwd/">
+                            <h3 class="media-heading">Youtube影片、Google Map地圖之響應式網頁設計(RWD)</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-03-12
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>鹹魚我最近做網頁增加了許多放入 youtube 影片的需求，當然複製個影片網址再嵌入 iframe 元素裡，設個高與寬、youtube 一些參數，基本上就能輕易搞定了，但我們需要支援 RWD 時，你一定會發現就算寬改成比例，高度也無法跟著變阿！該如何讓它自動縮放比例呢？<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/04/19/Linux系統管理-常用指令之筆記/">
+                            <img class="media-image" src="https://i.imgur.com/zvHzbR6.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/04/19/Linux系統管理-常用指令之筆記/">
+                            <h3 class="media-heading">Linux系統管理-常用指令之筆記</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-04-19
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>為了熟悉 Linux 系統的基本技巧，學習記錄一些下指令的操作，內容真的非常多。以下紀錄了關於操作<strong>使用者帳號、群組、目錄、檔案…</strong>等等的常用指令，內容有簡化過了，方便查詢使用，請善用<code>Ctrl + F</code>搜尋關鍵詞。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/05/28/學習前端工作流程-初期開發建置/">
+                            <h3 class="media-heading">學習前端工作流程 - 初期開發建置</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-05-28
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>現代的前端工程真的越來越進步，不管是技術、工具、實作方式都各個百花齊放，為了能夠實際應運用，好的前端工作流程也就變得很重要，讓我們在開發上更為快速便利，順便也讓許多細節任務都能自動化執行，在後面的維護上就能降低許多成本，甚至往後再做更多的擴充也行。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/06/18/校外實習將近一年的感想/">
+                            <img class="media-image" src="https://i.imgur.com/EC6iypR.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/06/18/校外實習將近一年的感想/">
+                            <h3 class="media-heading">校外實習將近一年的感想</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-06-18
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>隨著我在大學畢業了後，自己在校外的實習生活也跟著悄悄結束囉！</p>
+<p>時間從去年 2016 的 7 月到今年 2017 的 6 月初，這段時間真的很漫長，好幾個月前也有發過一篇 <a href="/2017/02/26/first-semaster-of-senior-introspect/">回顧文章</a> 也有講到一些的想法，不過下半學期增加了<strong>網頁設計</strong>的體驗，使我有了更多的興趣，對前端工程也有了不少的認識，以下就讓我說說自己的感想吧~<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/10/29/Mopcon2017-活動參與心得/">
+                            <h3 class="media-heading">MOPCON 2017 活動參與心得</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-10-29
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><div class="figure " style="width:;"><a class="fancybox" href="https://i.imgur.com/W0pgqlu.png" title="" data-fancybox-group="" target="_blank" rel="noopener"><img class="fig-img" src="https://i.imgur.com/W0pgqlu.png" alt=""></a></div><div style="clear:both;"></div>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>好久沒碰部落格了，就在剛退伍後的周末參與這場社群活動，為期兩天的各個大神的議程演講，這次我還拉幾位同屆畢業的好友來參加，多瞭解現代技術潮流的走向，這算是很大型的社群交流盛會了。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/12/23/ES6-series1-let-const/">
+                            <h3 class="media-heading">ES6 宣告方式 let、const</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-12-23
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ES6 新的兩種宣告方式，主要是用來取代<code>var</code>舊式宣告，新的方式讓變數本身涉及的範圍變小了，改善了許多潛在問題。</p>
+<ul>
+<li>let 為變數宣告</li>
+<li>const 為常數宣告</li>
+</ul></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/12/26/ES6-series2-Destructuring-Assignment/">
+                            <h3 class="media-heading">ES6 解構賦值 Destructuring Assignment</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-12-26
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ES6 新的概念 <strong>解構賦值</strong>，這使得<strong>傳值</strong>變得更為方便，可以想像是分解一個物品再分別套入對應的組件中，這樣的作法讓 JavaScript 的擴展上變得更為彈性，甚至直接取值不用再做多餘的轉換，提高程式碼更佳的可讀性。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/12/30/ES6-series3-for-of/">
+                            <h3 class="media-heading">ES6 取值迴圈 for...of</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-12-30
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ES6 新的迭代迴圈方法，基本上可以取代傳統上陣列的<code>forEach()</code>方法，另外這跟<code>for...in</code>迴圈很相似，但這兩者的用法是不同的，以下會多舉例比較他們之間的關係。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2018/01/01/ES6-series4-template-literals/">
+                            <h3 class="media-heading">ES6 樣板文字串 Template literals</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2018-01-01
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ES6 導入了樣板文字串 Template literals 是為了增強字串的表示方式，還能直接填入變數與表達式，可以更方便地輸出想要的文字組合了。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                28 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg'); background-position: center;"></div>
+<div id="shade"></div>
+
+        <!--SCRIPTS-->
+
+    <script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js"></script>
+
+    <script src="/assets/js/main-modify.js"></script>
+
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'https://visionyi.github.io/2018/04/23/網頁切版 - 開發技巧之筆記/';
+                 
+                    this.page.identifier = '2018/04/23/網頁切版 - 開發技巧之筆記/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'visionyi';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('0JJZH0HKW1', 'b1723c58435a105e4aca8900d617e32e');
+        var algoliaIndex = algoliaClient.initIndex('blog search');
+    </script>
+
+
+    </body>
+</html>

@@ -1,0 +1,871 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Visionyi 鹹魚&#39;s blog">
+    <title>ES6 Module System 模組系統 - Visionyi 鹹魚&#39;s blog</title>
+    <meta name="author" content="Visionyi 鹹魚">
+    
+        <meta name="keywords" content="JavaScript,ES6,ECMAScript 6,重點紀錄,Module System,模組系統,import,export,輸出 輸入">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="ES6 導入了模組系統的支援，它採用了 CommonJS 與 AMD 的優點，在編譯時進行靜態加載，而且可以使用於瀏覽器與伺服器端。概念上是將一個大程序拆分成互相依賴的小文件，需要用到時就拼裝起來使用，這對開發大型或複雜的專案是很重要的。">
+<meta name="keywords" content="JavaScript,ES6,ECMAScript 6,重點紀錄,Module System,模組系統,import,export,輸出 輸入">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="ES6 Module System 模組系統">
+<meta property="og:url" content="https://visionyi.github.io/2018/01/12/ES6-series12-module-system/index.html">
+<meta property="og:site_name" content="Visionyi 鹹魚&#39;s blog">
+<meta property="og:description" content="ES6 導入了模組系統的支援，它採用了 CommonJS 與 AMD 的優點，在編譯時進行靜態加載，而且可以使用於瀏覽器與伺服器端。概念上是將一個大程序拆分成互相依賴的小文件，需要用到時就拼裝起來使用，這對開發大型或複雜的專案是很重要的。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-09-16T03:47:17.024Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6 Module System 模組系統">
+<meta name="twitter:description" content="ES6 導入了模組系統的支援，它採用了 CommonJS 與 AMD 的優點，在編譯時進行靜態加載，而且可以使用於瀏覽器與伺服器端。概念上是將一個大程序拆分成互相依賴的小文件，需要用到時就拼裝起來使用，這對開發大型或複雜的專案是很重要的。">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://i.imgur.com/lnfmhKP.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+        <link rel="stylesheet" href="/assets/css/style-yrst5vo1nxaxbp2g3v9na2wg1lixlpr3ghbjdvskeixmu79deycecx3rh4bt.min.css">
+    
+        <link rel="stylesheet" href="/assets/css/main-modify.css">
+    
+    <!--STYLES END-->
+    
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="5" data-extra-modify="1">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Visionyi 鹹魚&#39;s blog</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" class="scrollbar" data-behavior="5" data-extra-modify="1">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/">
+                    <img class="sidebar-profile-picture" src="https://i.imgur.com/lnfmhKP.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <a href="/" style="text-decoration: none;">
+                    <h4 class="sidebar-profile-name">Visionyi 鹹魚&#39;s blog</h4>
+                </a>
+                
+                    <h5 class="sidebar-profile-bio"><p> 悠遊於程式 Coding 之間 <br /> 熱愛學習，尋找熱情，大膽擁抱它 <br /> 熟悉 Web、JavaScript、Vue、PHP <br /> 現在正處於前端開發中 <br /> <br /> <em>Welcome to my personal blog.</em> </p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link "
+                             href="/categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-th-list"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+                </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link "
+                             href="/tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+                </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+                </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link "
+                             href="#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+                </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+                </li>
+            
+            </ul>
+        
+
+        <div class="sidebar-horizon">
+            <h3 class="sidebar-title">關注我</h3>
+            <ul class="sidebar-outer-links">
+            
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://github.com/VisionYi"
+                                title="Github"
+                                target="_blank"
+                            >
+                            
+                                <i class="icon fa fa-github"></i>
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="mailto:scps950613@gmail.com"
+                                title="E-mail"
+                                target="_blank"
+                            >
+                            
+                                <i class="icon fa fa-envelope-o"></i>
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://fb.me/shane.yi.hong"
+                                title="Facebook"
+                                target="_blank"
+                            >
+                            
+                                <i class="icon fa fa-facebook"></i>
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="/atom.xml"
+                                title="RSS"
+                                target="_blank"
+                            >
+                            
+                                <i class="icon fa fa-rss"></i>
+                            
+                            </a>
+                        </li>
+                
+            
+            </ul>
+
+            <h3 class="sidebar-title">友站連結</h3>
+            <ul class="sidebar-outer-links">
+            
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://blog.aweimeow.tw/"
+                                title="aweimeow&#39;s blog"
+                                target="_blank"
+                            >
+                            
+                                aweimeow&#39;s blog
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://blog.louie.lu/"
+                                title="louie_lu&#39;s blog"
+                                target="_blank"
+                            >
+                            
+                                louie_lu&#39;s blog
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://shouzo.github.io/blog/"
+                                title="shouzo&#39;s blog"
+                                target="_blank"
+                            >
+                            
+                                shouzo&#39;s blog
+                            
+                            </a>
+                        </li>
+                
+            
+            </ul>
+        </div>
+    </div>
+</nav>
+
+            
+
+            <div id="main"
+                data-behavior="5"
+                data-extra-modify="1"
+                class="
+                       hasCoverMetaIn
+                       ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            ES6 Module System 模組系統
+        </h1>
+    
+    <div class="post-meta">
+    <i class="fa fa-calendar" style="margin-right: 5px;"></i>
+    <time itemprop="datePublished" datetime="2018-01-12T00:00:00+08:00">
+	
+		    2018-01-12
+    	
+    </time>
+    
+        <i class="fa fa-th-list" style="margin: 0 5px 0 20px;"></i>
+        
+    <a class="category-link" href="/categories/ES6-重點紀錄/">ES6-重點紀錄</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>ES6 導入了模組系統的支援，它採用了 CommonJS 與 AMD 的優點，<strong>在編譯時進行靜態加載，而且可以使用於瀏覽器與伺服器端</strong>。概念上是將一個大程序拆分成互相依賴的小文件，需要用到時就拼裝起來使用，這對開發大型或複雜的專案是很重要的。</p>
+<a id="more"></a>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>ES6 的模組程式碼會自動採用嚴格模式，不管是否有使用<code>&quot;use strict&quot;</code></li>
+<li>ES6 的模組是一個檔案一個模組</li>
+<li>主要使用兩個語句構成 :<ul>
+<li><strong><code>export</code>做為模組對外的輸出</strong>，放於檔案最後</li>
+<li><strong><code>import</code>做為輸入其他模組的功能</strong>，放於檔案開頭</li>
+</ul>
+</li>
+</ul>
+<h2 id="基本的輸出與輸入"><a href="#基本的輸出與輸入" class="headerlink" title="基本的輸出與輸入"></a>基本的輸出與輸入</h2><ul>
+<li>物件、類別、函數、常數…等等有變數名稱的都可以輸出</li>
+<li>都可以使用<code>as</code>關鍵字<strong>重新命名變數名稱</strong></li>
+</ul>
+<h3 id="export-輸出方式"><a href="#export-輸出方式" class="headerlink" title="export 輸出方式"></a>export 輸出方式</h3><ol>
+<li>在定義時直接做為輸出</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> str = <span class="string">'Hello'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'function test'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用已定義好或已存在的變數做為輸出，須加上大括號<code>{}</code>，用來<strong>統一輸出</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用大括號"&#123;&#125;"做統一輸出</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'Hello'</span>;</span><br><span class="line"><span class="keyword">const</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'function test'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 也能使用 as 重新命名</span></span><br><span class="line"><span class="keyword">export</span> &#123;str, obj, foo <span class="keyword">as</span> fooTest&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="import-輸入方式"><a href="#import-輸入方式" class="headerlink" title="import 輸入方式"></a>import 輸入方式</h3><ol>
+<li>使用<strong>大括號</strong><code>{}</code>輸入模組中有被 export 過的變數，後面加上檔案路徑或模組名稱</li>
+<li>使用<strong>萬用字元</strong><code>*</code>輸入模組中所有被 export 過的變數</li>
+<li>直接加載整個模組名稱，只用來執行模組而已</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基本使用，假設輸出模組的檔案名稱為 myModule.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;str, obj, fooTest&#125; <span class="keyword">from</span> <span class="string">'./myModule.js'</span>;</span><br><span class="line"></span><br><span class="line">fooTest();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用萬用字元*</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="built_in">module</span> <span class="keyword">from</span> <span class="string">'./myModule.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.str);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.obj);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接加載整個模組名稱</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'jquery'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="使用-export-default-輸出與輸入"><a href="#使用-export-default-輸出與輸入" class="headerlink" title="使用 export default 輸出與輸入"></a>使用 <code>export default</code> 輸出與輸入</h2><ul>
+<li>主要是用來當作模組檔案<strong>唯一的接口</strong>，指定為模組的”<strong>默認輸出</strong>“</li>
+<li>可以輸出<strong>匿名型態的函數、類別</strong></li>
+<li>輸入時可以<strong>指定任意名稱</strong>做為輸入的變數</li>
+<li>輸入與輸出都不必再加上大括號<code>{}</code>了</li>
+<li>一個模組只能有一個默認輸出</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 檔名: export.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">circleArea</span>(<span class="params">r</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">'area: '</span>, r * r * <span class="number">3.14</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> circleArea;</span><br><span class="line"></span><br><span class="line"><span class="comment">// --------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 檔名: import.js</span></span><br><span class="line"><span class="keyword">import</span> getArea <span class="keyword">from</span> <span class="string">'./export.js'</span>;</span><br><span class="line"></span><br><span class="line">getArea(<span class="number">10</span>); <span class="comment">// area: 100</span></span><br></pre></td></tr></table></figure>
+<h2 id="export-與-import-的複合寫法"><a href="#export-與-import-的複合寫法" class="headerlink" title="export 與 import 的複合寫法"></a>export 與 import 的複合寫法</h2><p>概念為<strong>可以先輸入後輸出同一個模組</strong>，export 和 import 語句結合在一起的意思。主要用來<strong>把接口輸出改名</strong>或<strong>改成默認的接口輸出</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; obj, foo &#125; <span class="keyword">from</span> <span class="string">'./myModule.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同於</span></span><br><span class="line"><span class="keyword">import</span> &#123; obj, foo &#125; <span class="keyword">from</span> <span class="string">'./myModule.js'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; obj, foo &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 改成默認的接口輸出</span></span><br><span class="line"><span class="keyword">export</span> &#123; foo <span class="keyword">as</span> <span class="keyword">default</span> &#125; <span class="keyword">from</span> <span class="string">'./lib.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同於</span></span><br><span class="line"><span class="keyword">import</span> &#123; foo &#125; <span class="keyword">from</span> <span class="string">'./lib.js'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> foo;</span><br></pre></td></tr></table></figure>
+<h2 id="如何在瀏覽器中運行實現"><a href="#如何在瀏覽器中運行實現" class="headerlink" title="如何在瀏覽器中運行實現"></a>如何在瀏覽器中運行實現</h2><p>基本上 ES6 的程式碼使用 Babel 轉譯成舊式的 JS 語法已經習以為常，但現今已有許多瀏覽器都支援 ES6 與模組系統了，可以直接寫入語法，支援的瀏覽器參考 <a href="https://caniuse.com/#search=module" target="_blank" rel="noopener">Can I use …</a></p>
+<p>運行模組系統使用以下方式 :</p>
+<ul>
+<li>使用<code>&lt;script&gt;</code>標籤，再加入<code>type=&quot;module&quot;</code>屬性，直接放入 HTML 檔案上就行了</li>
+<li><strong>只需要寫入主要執行的 JS 檔案</strong>，其他組件或外部檔案可以不必寫入，<strong>模組系統會自動去關聯其他被 import 的 JS 檔案</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 檔名: main.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="built_in">module</span> <span class="keyword">from</span> <span class="string">'./myModule.js'</span>;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// --------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 檔名: index.html</span></span><br><span class="line">&lt;script type=<span class="string">"module"</span> src=<span class="string">"./main.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>瀏覽器也允許內嵌語法在 HTML 網頁中</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> <span class="built_in">module</span> <span class="keyword">from</span> <span class="string">'./myModule.js'</span>;</span></span><br><span class="line"><span class="javascript">  <span class="comment">// ...</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>註 : 有些瀏覽器需要藉由伺服器去運行，直接開啟 HTML 檔案是不行的</p>
+</blockquote>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">Tagged in</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/ES6/">ES6</a> <a class="tag tag--primary tag--small t-link" href="/tags/JavaScript/">JavaScript</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/01/13/ES6-series13-api-other-expansion/"  data-tooltip="ES6 其他的 API 與特性擴展">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm icon-ml">Previous</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/01/11/ES6-series11-map/" data-tooltip="ES6 Map 物件">
+                
+                    <span class="hide-xs hide-sm icon-mr">Next</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://visionyi.github.io/2018/01/12/ES6-series12-module-system/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://visionyi.github.io/2018/01/12/ES6-series12-module-system/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://visionyi.github.io/2018/01/12/ES6-series12-module-system/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 Visionyi 鹹魚. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5" data-extra-modify="1">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/01/13/ES6-series13-api-other-expansion/"  data-tooltip="ES6 其他的 API 與特性擴展">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm icon-ml">Previous</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/01/11/ES6-series11-map/" data-tooltip="ES6 Map 物件">
+                
+                    <span class="hide-xs hide-sm icon-mr">Next</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://visionyi.github.io/2018/01/12/ES6-series12-module-system/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://visionyi.github.io/2018/01/12/ES6-series12-module-system/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://visionyi.github.io/2018/01/12/ES6-series12-module-system/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://visionyi.github.io/2018/01/12/ES6-series12-module-system/">
+                <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://visionyi.github.io/2018/01/12/ES6-series12-module-system/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://visionyi.github.io/2018/01/12/ES6-series12-module-system/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://i.imgur.com/lnfmhKP.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Visionyi 鹹魚</h4>
+        
+            <div id="about-card-bio"><p> 悠遊於程式 Coding 之間 <br /> 熱愛學習，尋找熱情，大膽擁抱它 <br /> 熟悉 Web、JavaScript、Vue、PHP <br /> 現在正處於前端開發中 <br /> <br /> <em>Welcome to my personal blog.</em> </p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Kaohsiung, Taiwan
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/02/26/大四上學期的回顧/">
+                            <img class="media-image" src="https://i.imgur.com/oZdRaPM.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/02/26/大四上學期的回顧/">
+                            <h3 class="media-heading">大四上學期的回顧</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-02-26
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>回想過去四上的我其實做了一些不同的嘗試與挑戰，不管是實習上或在學校，程式技術的學習，職場上辛苦的體驗，都有不少的收穫，也更讓我認識了許多新朋友呢！<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/03/12/youtube-google-map-rwd/">
+                            <h3 class="media-heading">Youtube影片、Google Map地圖之響應式網頁設計(RWD)</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-03-12
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>鹹魚我最近做網頁增加了許多放入 youtube 影片的需求，當然複製個影片網址再嵌入 iframe 元素裡，設個高與寬、youtube 一些參數，基本上就能輕易搞定了，但我們需要支援 RWD 時，你一定會發現就算寬改成比例，高度也無法跟著變阿！該如何讓它自動縮放比例呢？<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/04/19/Linux系統管理-常用指令之筆記/">
+                            <img class="media-image" src="https://i.imgur.com/zvHzbR6.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/04/19/Linux系統管理-常用指令之筆記/">
+                            <h3 class="media-heading">Linux系統管理-常用指令之筆記</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-04-19
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>為了熟悉 Linux 系統的基本技巧，學習記錄一些下指令的操作，內容真的非常多。以下紀錄了關於操作<strong>使用者帳號、群組、目錄、檔案…</strong>等等的常用指令，內容有簡化過了，方便查詢使用，請善用<code>Ctrl + F</code>搜尋關鍵詞。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/05/28/學習前端工作流程-初期開發建置/">
+                            <h3 class="media-heading">學習前端工作流程 - 初期開發建置</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-05-28
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>現代的前端工程真的越來越進步，不管是技術、工具、實作方式都各個百花齊放，為了能夠實際應運用，好的前端工作流程也就變得很重要，讓我們在開發上更為快速便利，順便也讓許多細節任務都能自動化執行，在後面的維護上就能降低許多成本，甚至往後再做更多的擴充也行。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/06/18/校外實習將近一年的感想/">
+                            <img class="media-image" src="https://i.imgur.com/EC6iypR.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/06/18/校外實習將近一年的感想/">
+                            <h3 class="media-heading">校外實習將近一年的感想</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-06-18
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>隨著我在大學畢業了後，自己在校外的實習生活也跟著悄悄結束囉！</p>
+<p>時間從去年 2016 的 7 月到今年 2017 的 6 月初，這段時間真的很漫長，好幾個月前也有發過一篇 <a href="/2017/02/26/first-semaster-of-senior-introspect/">回顧文章</a> 也有講到一些的想法，不過下半學期增加了<strong>網頁設計</strong>的體驗，使我有了更多的興趣，對前端工程也有了不少的認識，以下就讓我說說自己的感想吧~<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/10/29/Mopcon2017-活動參與心得/">
+                            <h3 class="media-heading">MOPCON 2017 活動參與心得</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-10-29
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><div class="figure " style="width:;"><a class="fancybox" href="https://i.imgur.com/W0pgqlu.png" title="" data-fancybox-group="" target="_blank" rel="noopener"><img class="fig-img" src="https://i.imgur.com/W0pgqlu.png" alt=""></a></div><div style="clear:both;"></div>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>好久沒碰部落格了，就在剛退伍後的周末參與這場社群活動，為期兩天的各個大神的議程演講，這次我還拉幾位同屆畢業的好友來參加，多瞭解現代技術潮流的走向，這算是很大型的社群交流盛會了。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/12/23/ES6-series1-let-const/">
+                            <h3 class="media-heading">ES6 宣告方式 let、const</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-12-23
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ES6 新的兩種宣告方式，主要是用來取代<code>var</code>舊式宣告，新的方式讓變數本身涉及的範圍變小了，改善了許多潛在問題。</p>
+<ul>
+<li>let 為變數宣告</li>
+<li>const 為常數宣告</li>
+</ul></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/12/26/ES6-series2-Destructuring-Assignment/">
+                            <h3 class="media-heading">ES6 解構賦值 Destructuring Assignment</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-12-26
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ES6 新的概念 <strong>解構賦值</strong>，這使得<strong>傳值</strong>變得更為方便，可以想像是分解一個物品再分別套入對應的組件中，這樣的作法讓 JavaScript 的擴展上變得更為彈性，甚至直接取值不用再做多餘的轉換，提高程式碼更佳的可讀性。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/12/30/ES6-series3-for-of/">
+                            <h3 class="media-heading">ES6 取值迴圈 for...of</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-12-30
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ES6 新的迭代迴圈方法，基本上可以取代傳統上陣列的<code>forEach()</code>方法，另外這跟<code>for...in</code>迴圈很相似，但這兩者的用法是不同的，以下會多舉例比較他們之間的關係。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2018/01/01/ES6-series4-template-literals/">
+                            <h3 class="media-heading">ES6 樣板文字串 Template literals</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2018-01-01
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ES6 導入了樣板文字串 Template literals 是為了增強字串的表示方式，還能直接填入變數與表達式，可以更方便地輸出想要的文字組合了。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                28 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg'); background-position: center;"></div>
+<div id="shade"></div>
+
+        <!--SCRIPTS-->
+
+    <script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js"></script>
+
+    <script src="/assets/js/main-modify.js"></script>
+
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'https://visionyi.github.io/2018/01/12/ES6-series12-module-system/';
+                 
+                    this.page.identifier = '2018/01/12/ES6-series12-module-system/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'visionyi';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('0JJZH0HKW1', 'b1723c58435a105e4aca8900d617e32e');
+        var algoliaIndex = algoliaClient.initIndex('blog search');
+    </script>
+
+
+    </body>
+</html>

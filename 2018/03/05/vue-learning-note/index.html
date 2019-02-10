@@ -1,0 +1,1025 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Visionyi 鹹魚&#39;s blog">
+    <title>Vue Learning 學習筆記 (已結束更新) - Visionyi 鹹魚&#39;s blog</title>
+    <meta name="author" content="Visionyi 鹹魚">
+    
+        <meta name="keywords" content="web,學習筆記,vue,vuex,vue-router,Axios">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="這是從今年 3 月初開始學習 Vue 的相關技術到現在，目前已更新結束。 體驗的過程中採了不少坑，嘗試導入各個專案中，希望可以建立更完整的 SPA 網站，因此記錄的一些心得內容都放在這裡了，提供未來的自己可以更快速地開發專案，運用 Vue 建立更完善與維護性高的網頁服務。  Update date: 2018-07-26">
+<meta name="keywords" content="web,學習筆記,vue,vuex,vue-router,Axios">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Vue Learning 學習筆記 (已結束更新)">
+<meta property="og:url" content="https://visionyi.github.io/2018/03/05/vue-learning-note/index.html">
+<meta property="og:site_name" content="Visionyi 鹹魚&#39;s blog">
+<meta property="og:description" content="這是從今年 3 月初開始學習 Vue 的相關技術到現在，目前已更新結束。 體驗的過程中採了不少坑，嘗試導入各個專案中，希望可以建立更完整的 SPA 網站，因此記錄的一些心得內容都放在這裡了，提供未來的自己可以更快速地開發專案，運用 Vue 建立更完善與維護性高的網頁服務。  Update date: 2018-07-26">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-09-16T03:47:17.027Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue Learning 學習筆記 (已結束更新)">
+<meta name="twitter:description" content="這是從今年 3 月初開始學習 Vue 的相關技術到現在，目前已更新結束。 體驗的過程中採了不少坑，嘗試導入各個專案中，希望可以建立更完整的 SPA 網站，因此記錄的一些心得內容都放在這裡了，提供未來的自己可以更快速地開發專案，運用 Vue 建立更完善與維護性高的網頁服務。  Update date: 2018-07-26">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://i.imgur.com/lnfmhKP.jpg"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    
+        <link rel="stylesheet" href="/assets/css/style-yrst5vo1nxaxbp2g3v9na2wg1lixlpr3ghbjdvskeixmu79deycecx3rh4bt.min.css">
+    
+        <link rel="stylesheet" href="/assets/css/main-modify.css">
+    
+    <!--STYLES END-->
+    
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="5" data-extra-modify="1">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Visionyi 鹹魚&#39;s blog</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" class="scrollbar" data-behavior="5" data-extra-modify="1">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/">
+                    <img class="sidebar-profile-picture" src="https://i.imgur.com/lnfmhKP.jpg" alt="Author&#39;s picture"/>
+                </a>
+                <a href="/" style="text-decoration: none;">
+                    <h4 class="sidebar-profile-name">Visionyi 鹹魚&#39;s blog</h4>
+                </a>
+                
+                    <h5 class="sidebar-profile-bio"><p> 悠遊於程式 Coding 之間 <br /> 熱愛學習，尋找熱情，大膽擁抱它 <br /> 熟悉 Web、JavaScript、Vue、PHP <br /> 現在正處於前端開發中 <br /> <br /> <em>Welcome to my personal blog.</em> </p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link "
+                             href="/categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-th-list"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+                </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link "
+                             href="/tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+                </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+                </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link "
+                             href="#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+                </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+                </li>
+            
+            </ul>
+        
+
+        <div class="sidebar-horizon">
+            <h3 class="sidebar-title">關注我</h3>
+            <ul class="sidebar-outer-links">
+            
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://github.com/VisionYi"
+                                title="Github"
+                                target="_blank"
+                            >
+                            
+                                <i class="icon fa fa-github"></i>
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="mailto:scps950613@gmail.com"
+                                title="E-mail"
+                                target="_blank"
+                            >
+                            
+                                <i class="icon fa fa-envelope-o"></i>
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://fb.me/shane.yi.hong"
+                                title="Facebook"
+                                target="_blank"
+                            >
+                            
+                                <i class="icon fa fa-facebook"></i>
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="/atom.xml"
+                                title="RSS"
+                                target="_blank"
+                            >
+                            
+                                <i class="icon fa fa-rss"></i>
+                            
+                            </a>
+                        </li>
+                
+            
+            </ul>
+
+            <h3 class="sidebar-title">友站連結</h3>
+            <ul class="sidebar-outer-links">
+            
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://blog.aweimeow.tw/"
+                                title="aweimeow&#39;s blog"
+                                target="_blank"
+                            >
+                            
+                                aweimeow&#39;s blog
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://blog.louie.lu/"
+                                title="louie_lu&#39;s blog"
+                                target="_blank"
+                            >
+                            
+                                louie_lu&#39;s blog
+                            
+                            </a>
+                        </li>
+                
+            
+                
+                        <li class="item-link">
+                            <a  href="https://shouzo.github.io/blog/"
+                                title="shouzo&#39;s blog"
+                                target="_blank"
+                            >
+                            
+                                shouzo&#39;s blog
+                            
+                            </a>
+                        </li>
+                
+            
+            </ul>
+        </div>
+    </div>
+</nav>
+
+            
+
+            <div id="main"
+                data-behavior="5"
+                data-extra-modify="1"
+                class="
+                       hasCoverMetaIn
+                       ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Vue Learning 學習筆記 (已結束更新)
+        </h1>
+    
+    <div class="post-meta">
+    <i class="fa fa-calendar" style="margin-right: 5px;"></i>
+    <time itemprop="datePublished" datetime="2018-03-05T00:00:00+08:00">
+	
+		    2018-03-05
+    	
+    </time>
+    
+        <i class="fa fa-th-list" style="margin: 0 5px 0 20px;"></i>
+        
+    <a class="category-link" href="/categories/網頁開發/">網頁開發</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>這是從今年 3 月初開始學習 Vue 的相關技術到現在，目前已更新結束。</p>
+<p>體驗的過程中採了不少坑，嘗試導入各個專案中，希望可以建立更完整的 SPA 網站，因此記錄的一些心得內容都放在這裡了，提供未來的自己可以更快速地開發專案，運用 Vue 建立更完善與維護性高的網頁服務。</p>
+<blockquote>
+<p>Update date: 2018-07-26</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="主要學習的技術領域"><a href="#主要學習的技術領域" class="headerlink" title="主要學習的技術領域"></a>主要學習的技術領域</h3><ul>
+<li>Vue v2.x</li>
+<li>vue-cli v3.x 環境建置手腳架</li>
+<li>vue-router 前端路由操作</li>
+<li>vuex + axios 狀態與共用資料的管理 + 處理 HTTP 請求服務</li>
+<li>Vuetify UI 組件框架</li>
+</ul>
+<h3 id="vue-生命週期-mounted-的使用時機"><a href="#vue-生命週期-mounted-的使用時機" class="headerlink" title="vue 生命週期 mounted 的使用時機"></a>vue 生命週期 mounted 的使用時機</h3><ul>
+<li><p>瀏覽器進行以下階段時，將調用此函數鉤子</p>
+<ul>
+<li>當頁面所有 DOM 元素都第一次渲染完成</li>
+<li>vue 的所有實例資料掛載完成後</li>
+</ul>
+</li>
+<li><p>在此進行以下操作</p>
+<ul>
+<li>執行 ajax 資料請求</li>
+<li>執行資料初始化，包含 Vuex store 的 資料狀態</li>
+<li>取得 <code>vm.$refs</code>、<code>window</code>、<code>document</code> 之 DOM 元素，執行資料初始化</li>
+<li>執行全局的 <code>window</code> 監聽事件 scroll, resize 之類的</li>
+</ul>
+</li>
+<li><p>參考 : <a href="https://segmentfault.com/a/1190000008570622" target="_blank" rel="noopener">關於 Vue 實例的生命週期 created &amp; mounted 的區別</a></p>
+</li>
+</ul>
+<h3 id="src-中的目錄架構，另外加上-3-個資料夾"><a href="#src-中的目錄架構，另外加上-3-個資料夾" class="headerlink" title="src 中的目錄架構，另外加上 3 個資料夾"></a>src 中的目錄架構，另外加上 3 個資料夾</h3><ul>
+<li>api 目錄: 後端 api 的實作或反向校驗後端 api 的方法</li>
+<li>service 目錄: 處理後端 api 請求後的 Data，整合後再統一給 store</li>
+<li>shared / util 目錄: 一些共用的 library、自製的函數方法、常數設定…等等</li>
+<li>參考: <a href="https://github.com/berwin/Blog/issues/14" target="_blank" rel="noopener">Vue 項目架構設計與工程化實踐</a></li>
+</ul>
+<h3 id="Vue-Components-組件"><a href="#Vue-Components-組件" class="headerlink" title="Vue Components 組件"></a>Vue Components 組件</h3><ul>
+<li>將所有的 components 集中導向到同一個 index.js 接口</li>
+<li>之後再到 src/main.js 一起輸出成 <code>Vue.component(key, value)</code>，這樣所有的 view 就能直接引用了</li>
+</ul>
+<h3 id="輔助工具"><a href="#輔助工具" class="headerlink" title="輔助工具"></a>輔助工具</h3><ul>
+<li>使用 <a href="https://browsersync.io/" target="_blank" rel="noopener">browser-sync</a> 做一個簡易的 server，把已建置完成的 dist 靜態檔案放上去</li>
+<li>使用 <a href="https://github.com/typicode/json-server" target="_blank" rel="noopener">json-server</a> 建構後端 REST API，將資料庫建在記憶體中的方法</li>
+<li>使用 <a href="https://www.npmjs.com/package/gh-pages" target="_blank" rel="noopener">gh-pages - npm</a> 佈署發布到 Github Page 上</li>
+</ul>
+<h3 id="把-axios-api-封裝成-request-js"><a href="#把-axios-api-封裝成-request-js" class="headerlink" title="把 axios api 封裝成 request.js"></a>把 axios api 封裝成 request.js</h3><ul>
+<li>可加入額外的設定條件</li>
+<li>可事先攔截 request 的內容，加入 Authentication 或限制條件之類的，再傳給後端</li>
+<li>可事先攔截 response 的內容，做一些資料的邏輯修改再回傳</li>
+<li>可事先統一處理 error 事件的產生，例: 發出錯誤訊息、轉跳網址之類的</li>
+<li>可以把 data 改成 <strong>POST 表單形式</strong>再傳給後端<ul>
+<li>參考: <a href="https://segmentfault.com/q/1010000008462977" target="_blank" rel="noopener">axios發送post請求，如何提交表單數據</a></li>
+</ul>
+</li>
+<li>參考: <a href="https://xiaozhuanlan.com/topic/8295076341" target="_blank" rel="noopener">Axios 封裝(報錯,鑑權,跳轉,攔截,提示)</a></li>
+</ul>
+<h3 id="vuex-store-使用技巧"><a href="#vuex-store-使用技巧" class="headerlink" title="vuex store 使用技巧"></a>vuex store 使用技巧</h3><ul>
+<li><p>哪時候可以使用</p>
+<ul>
+<li>不同的組件或 view 需要<strong>共用的資料或狀態</strong>時可用</li>
+<li><strong>最主要串接 API 的資料</strong>請一定要放入，不時就可能會出現相關聯的狀態或資料參考的~</li>
+<li>不想隨著切換頁面一直重載的<strong>大筆數的資料</strong></li>
+<li>統一管理資料用也行</li>
+</ul>
+</li>
+<li><p>mutations 的使用時機</p>
+<ul>
+<li><strong>操作單一的資料內容時</strong></li>
+<li>set、add (<code>arr.push()</code>)、update、delete 之類的操作</li>
+</ul>
+</li>
+<li><p>actions 的使用時機</p>
+<ul>
+<li><strong>處理資料的商業邏輯時</strong></li>
+<li><strong>處理非同步事件</strong></li>
+</ul>
+</li>
+<li><p>store 撰寫思考順序</p>
+<ul>
+<li>state —&gt; getters —&gt; mutations (set) —&gt;  actions —&gt; mutations (add, update, delete)</li>
+</ul>
+</li>
+<li><p>修改資料狀態的 JS 使用方式 (為了讓 vue 能夠檢測到更新 DOM)</p>
+<ul>
+<li>陣列新增項目：<ul>
+<li><code>arr.push(newItem)</code></li>
+<li><code>arr.push({ props: value })</code></li>
+</ul>
+</li>
+<li><p>陣列修改項目：</p>
+<ul>
+<li><code>arr.splice(index, 1, newItem)</code></li>
+<li><code>arr.splice(arr.indexOf(oldItem), 1, { ...oldItem, props: value })</code></li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> index = arr.findIndex(<span class="function"><span class="params">item</span> =&gt;</span> item.id === id);</span><br><span class="line">arr.splice(index, <span class="number">1</span>, &#123; ...arr[index], <span class="attr">props</span>: value &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>陣列刪除項目：</p>
+<ul>
+<li><code>arr.splice(index, 1)</code></li>
+<li><code>arr.splice(arr.indexOf(oldItem), 1)</code></li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> index = arr.findIndex(<span class="function"><span class="params">item</span> =&gt;</span> item.id === id);</span><br><span class="line">arr.splice(index, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>物件新增 / 修改屬性內容：</p>
+<ul>
+<li><code>obj = {...obj, props: value}</code></li>
+</ul>
+</li>
+<li>物件新增 / 修改多個屬性內容：<ul>
+<li><code>obj = {...obj, ...objData}</code></li>
+<li><code>obj = {...obj, ...{ p1: v1, p2: v2 } }</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>可使用 vuex modules 系統，其中參數 namespaced 設置為 true，就能把資料做成模組分類</p>
+</li>
+</ul>
+<h3 id="vue-directives-的使用時機"><a href="#vue-directives-的使用時機" class="headerlink" title="vue.directives 的使用時機"></a>vue.directives 的使用時機</h3><ul>
+<li><p>函數鉤子 <code>bind</code> :</p>
+<ul>
+<li>當指令被綁定到 DOM 元素時調用，初始化設置用</li>
+<li>基本上使用以下 <code>inserted</code> 函數鉤子來代替使用就行了</li>
+</ul>
+</li>
+<li><p>函數鉤子 <code>inserted</code> :</p>
+<ul>
+<li>當 DOM 元素被綁定與渲染完成後調用 (被 vue 插入節點中時調用)</li>
+<li>可用於全局 window 監聽事件來綁定 DOM 元素的操作，參數值可以是函數</li>
+</ul>
+</li>
+<li><p>函數鉤子 <code>unbind</code> :</p>
+<ul>
+<li>當 DOM 元素被 vue 從節點中移除時調用</li>
+</ul>
+</li>
+<li><p>函數鉤子 <code>update</code> :</p>
+<ul>
+<li>當所在的組件任一 DOM 元素更新渲染時會調用</li>
+<li>如果想要<strong>隨著 資料(Data) 或 狀態(status) 的變化去更新 DOM 元素時</strong>，這就非常好用</li>
+<li>由於 <code>binding.value</code> 沒變動有時也會執行，可以通過比較 <code>binding.oldValue</code> 來過濾不必要的更新執行</li>
+</ul>
+</li>
+<li><p>缺點 :</p>
+<ul>
+<li><del>無法使用 <code>this</code> (vue 實例)，所有的 data 都只能從參數值傳進來，所取得的參數除了 el 其他都只能是唯讀的</del>，<em>請看進階用法</em></li>
+</ul>
+</li>
+<li><p>進階用法:</p>
+<ul>
+<li>參數值可以是一個函數，使用 directive 取得的值帶入此函數方法，類似閉包方式，此函數內就能使用 <code>this</code> (vue 實例)了</li>
+</ul>
+</li>
+</ul>
+<h3 id="vue-的動畫-amp-元素轉場操作"><a href="#vue-的動畫-amp-元素轉場操作" class="headerlink" title="vue 的動畫 &amp; 元素轉場操作"></a>vue 的動畫 &amp; 元素轉場操作</h3><ul>
+<li>使用 <code>&lt;transition&gt;</code> 標籤</li>
+<li>加上 appear 屬性可以在初始化渲染後馬上執行動畫效果</li>
+</ul>
+<h3 id="登入系統概念"><a href="#登入系統概念" class="headerlink" title="登入系統概念"></a>登入系統概念</h3><ul>
+<li><p>加上 Token 認證機制</p>
+</li>
+<li><p>需要使用 localStorage 或 cookies 儲存 token，可讓其他子網域自動認證/自動登入，也可以加入 expire 過期機制</p>
+</li>
+<li><p>可以創建 auth.js 專門處理 登入、登出、註冊 的邏輯概念</p>
+</li>
+<li><p>完整實踐概念:</p>
+<ol>
+<li>前端 component - 處理畫面的狀態與資料顯示<ul>
+<li>loading 狀態</li>
+<li>response message 顯示</li>
+<li>成功後觸發 url 轉跳</li>
+</ul>
+</li>
+<li>前端 vuex store - 處理元件之間的共用資料與暫存資料<ul>
+<li>獲取 user 基本資料</li>
+<li>獲取 token、登入或登出時間</li>
+<li>使用 localStorage 或 cookies 暫存</li>
+<li>抓取第三方 api 服務的資料</li>
+<li>敏感資料處理/編碼</li>
+</ul>
+</li>
+<li>後端 - 操作資料庫的邏輯與處理驗證資料<ul>
+<li>查詢 user 是否存在</li>
+<li>修改登入或登出狀態、時間、身分…等等</li>
+<li>驗證 token、敏感資料解碼</li>
+<li>回傳是否成功，回傳資料: result data 或 failure message</li>
+</ul>
+</li>
+<li>前端 router - 判斷使 url 轉跳為登入頁面<ul>
+<li>當敏感頁面需要登入驗證時轉跳</li>
+<li>當發現登入 token 過期時轉跳</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h3><ul>
+<li>改成動態加載的方式，避免名稱或邏輯衝突</li>
+</ul>
+<h3 id="sass-scss-撰寫"><a href="#sass-scss-撰寫" class="headerlink" title="sass/scss 撰寫"></a>sass/scss 撰寫</h3><ul>
+<li>如果是使用 vue-cli v3.x 建置初始的樣版</li>
+<li>可以配置全局的 SCSS 自動載入，在 vue.config.js 檔案中配置如下</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  css: &#123;</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      sass: &#123;</span><br><span class="line">        <span class="comment">// 自動載入常用的檔案，例: 全局變數、常用函數</span></span><br><span class="line">        data: <span class="string">'@import "@/your_path/_variables.scss"; @import "@/your_path/_mixins.scss";'</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">Tagged in</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Vue/">Vue</a> <a class="tag tag--primary tag--small t-link" href="/tags/note/">note</a> <a class="tag tag--primary tag--small t-link" href="/tags/web/">web</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/23/網頁切版 - 開發技巧之筆記/"  data-tooltip="網頁切版 - 開發技巧之筆記 (持續更新)">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm icon-ml">Previous</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/01/25/ES6-series0-all/" data-tooltip="JavaScript ES6 重點紀錄系列 總集">
+                
+                    <span class="hide-xs hide-sm icon-mr">Next</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://visionyi.github.io/2018/03/05/vue-learning-note/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://visionyi.github.io/2018/03/05/vue-learning-note/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://visionyi.github.io/2018/03/05/vue-learning-note/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 Visionyi 鹹魚. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5" data-extra-modify="1">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/23/網頁切版 - 開發技巧之筆記/"  data-tooltip="網頁切版 - 開發技巧之筆記 (持續更新)">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm icon-ml">Previous</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/01/25/ES6-series0-all/" data-tooltip="JavaScript ES6 重點紀錄系列 總集">
+                
+                    <span class="hide-xs hide-sm icon-mr">Next</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://visionyi.github.io/2018/03/05/vue-learning-note/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://visionyi.github.io/2018/03/05/vue-learning-note/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs" style="display: none;">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://visionyi.github.io/2018/03/05/vue-learning-note/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://visionyi.github.io/2018/03/05/vue-learning-note/">
+                <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://visionyi.github.io/2018/03/05/vue-learning-note/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://visionyi.github.io/2018/03/05/vue-learning-note/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://i.imgur.com/lnfmhKP.jpg" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Visionyi 鹹魚</h4>
+        
+            <div id="about-card-bio"><p> 悠遊於程式 Coding 之間 <br /> 熱愛學習，尋找熱情，大膽擁抱它 <br /> 熟悉 Web、JavaScript、Vue、PHP <br /> 現在正處於前端開發中 <br /> <br /> <em>Welcome to my personal blog.</em> </p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Engineer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Kaohsiung, Taiwan
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/02/26/大四上學期的回顧/">
+                            <img class="media-image" src="https://i.imgur.com/oZdRaPM.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/02/26/大四上學期的回顧/">
+                            <h3 class="media-heading">大四上學期的回顧</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-02-26
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>回想過去四上的我其實做了一些不同的嘗試與挑戰，不管是實習上或在學校，程式技術的學習，職場上辛苦的體驗，都有不少的收穫，也更讓我認識了許多新朋友呢！<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/03/12/youtube-google-map-rwd/">
+                            <h3 class="media-heading">Youtube影片、Google Map地圖之響應式網頁設計(RWD)</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-03-12
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>鹹魚我最近做網頁增加了許多放入 youtube 影片的需求，當然複製個影片網址再嵌入 iframe 元素裡，設個高與寬、youtube 一些參數，基本上就能輕易搞定了，但我們需要支援 RWD 時，你一定會發現就算寬改成比例，高度也無法跟著變阿！該如何讓它自動縮放比例呢？<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/04/19/Linux系統管理-常用指令之筆記/">
+                            <img class="media-image" src="https://i.imgur.com/zvHzbR6.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/04/19/Linux系統管理-常用指令之筆記/">
+                            <h3 class="media-heading">Linux系統管理-常用指令之筆記</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-04-19
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>為了熟悉 Linux 系統的基本技巧，學習記錄一些下指令的操作，內容真的非常多。以下紀錄了關於操作<strong>使用者帳號、群組、目錄、檔案…</strong>等等的常用指令，內容有簡化過了，方便查詢使用，請善用<code>Ctrl + F</code>搜尋關鍵詞。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/05/28/學習前端工作流程-初期開發建置/">
+                            <h3 class="media-heading">學習前端工作流程 - 初期開發建置</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-05-28
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>現代的前端工程真的越來越進步，不管是技術、工具、實作方式都各個百花齊放，為了能夠實際應運用，好的前端工作流程也就變得很重要，讓我們在開發上更為快速便利，順便也讓許多細節任務都能自動化執行，在後面的維護上就能降低許多成本，甚至往後再做更多的擴充也行。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/06/18/校外實習將近一年的感想/">
+                            <img class="media-image" src="https://i.imgur.com/EC6iypR.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/06/18/校外實習將近一年的感想/">
+                            <h3 class="media-heading">校外實習將近一年的感想</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-06-18
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>隨著我在大學畢業了後，自己在校外的實習生活也跟著悄悄結束囉！</p>
+<p>時間從去年 2016 的 7 月到今年 2017 的 6 月初，這段時間真的很漫長，好幾個月前也有發過一篇 <a href="/2017/02/26/first-semaster-of-senior-introspect/">回顧文章</a> 也有講到一些的想法，不過下半學期增加了<strong>網頁設計</strong>的體驗，使我有了更多的興趣，對前端工程也有了不少的認識，以下就讓我說說自己的感想吧~<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/10/29/Mopcon2017-活動參與心得/">
+                            <h3 class="media-heading">MOPCON 2017 活動參與心得</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-10-29
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><div class="figure " style="width:;"><a class="fancybox" href="https://i.imgur.com/W0pgqlu.png" title="" data-fancybox-group="" target="_blank" rel="noopener"><img class="fig-img" src="https://i.imgur.com/W0pgqlu.png" alt=""></a></div><div style="clear:both;"></div>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>好久沒碰部落格了，就在剛退伍後的周末參與這場社群活動，為期兩天的各個大神的議程演講，這次我還拉幾位同屆畢業的好友來參加，多瞭解現代技術潮流的走向，這算是很大型的社群交流盛會了。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/12/23/ES6-series1-let-const/">
+                            <h3 class="media-heading">ES6 宣告方式 let、const</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-12-23
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ES6 新的兩種宣告方式，主要是用來取代<code>var</code>舊式宣告，新的方式讓變數本身涉及的範圍變小了，改善了許多潛在問題。</p>
+<ul>
+<li>let 為變數宣告</li>
+<li>const 為常數宣告</li>
+</ul></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/12/26/ES6-series2-Destructuring-Assignment/">
+                            <h3 class="media-heading">ES6 解構賦值 Destructuring Assignment</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-12-26
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ES6 新的概念 <strong>解構賦值</strong>，這使得<strong>傳值</strong>變得更為方便，可以想像是分解一個物品再分別套入對應的組件中，這樣的作法讓 JavaScript 的擴展上變得更為彈性，甚至直接取值不用再做多餘的轉換，提高程式碼更佳的可讀性。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2017/12/30/ES6-series3-for-of/">
+                            <h3 class="media-heading">ES6 取值迴圈 for...of</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2017-12-30
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ES6 新的迭代迴圈方法，基本上可以取代傳統上陣列的<code>forEach()</code>方法，另外這跟<code>for...in</code>迴圈很相似，但這兩者的用法是不同的，以下會多舉例比較他們之間的關係。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://visionyi.github.io/2018/01/01/ES6-series4-template-literals/">
+                            <h3 class="media-heading">ES6 樣板文字串 Template literals</h3>
+                        </a>
+                        <span class="media-meta">
+                            <i class="fa fa-calendar text-small" style="margin-right: 5px;"></i>
+                            <span class="media-date text-small">
+                                
+                                    2018-01-01
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ES6 導入了樣板文字串 Template literals 是為了增強字串的表示方式，還能直接填入變數與表達式，可以更方便地輸出想要的文字組合了。</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                28 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg'); background-position: center;"></div>
+<div id="shade"></div>
+
+        <!--SCRIPTS-->
+
+    <script src="/assets/js/script-rt08quwts7iav5x0cfd2ym0gb5qkd1lvrsmwrakxtkhefmaaes4ywkmnjnwf.min.js"></script>
+
+    <script src="/assets/js/main-modify.js"></script>
+
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'https://visionyi.github.io/2018/03/05/vue-learning-note/';
+                 
+                    this.page.identifier = '2018/03/05/vue-learning-note/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'visionyi';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('0JJZH0HKW1', 'b1723c58435a105e4aca8900d617e32e');
+        var algoliaIndex = algoliaClient.initIndex('blog search');
+    </script>
+
+
+    </body>
+</html>
